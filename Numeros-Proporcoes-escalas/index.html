@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista 01</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="app">
+
+  <!-- ========================= -->
+  <!-- 🟩 TELA INICIAL -->
+  <!-- ========================= -->
+  <section id="tela-inicio" class="tela">
+
+    <main class="conteudo">
+
+      <h1>Acesso aos Problemas</h1>
+
+      <p class="intro">
+        Clique sobre um botão para acessar um problema da lista. Siga com atenção as seguintes instruções:
+      </p>
+
+      <div class="instrucao">
+        <div class="item"><div class="numero">1.</div><div class="texto">Leia o enunciado com atenção.</div></div>
+        <div class="item"><div class="numero">2.</div><div class="texto">Use papel para organizar as informações.</div></div>
+        <div class="item"><div class="numero">3.</div><div class="texto">Desenvolva seu raciocínio.</div></div>
+        <div class="item"><div class="numero">4.</div><div class="texto">Use a ajuda se necessário.</div></div>
+      </div>
+
+      <h2>Problemas</h2>
+
+      <div class="botoes">
+        <button onclick="abrirQuestao(0)">1</button>
+        <button onclick="abrirQuestao(1)">2</button>
+        <button onclick="abrirQuestao(2)">3</button>
+        <button onclick="abrirQuestao(3)">4</button>
+        <button onclick="abrirQuestao(4)">5</button>
+      </div>
+
+    </main>
+  </section>
+
+  <!-- ========================= -->
+  <!-- 🟦 TELA QUESTÃO -->
+  <!-- ========================= -->
+  <section id="tela-questao" class="tela" style="display: none;">
+
+    <div class="questao-layout">
+
+      <!-- CONTEÚDO -->
+      <main class="conteudo">
+
+        <div class="bloco-questao">
+          <h2 id="numero-questao"></h2>
+          <p id="enunciado-questao"></p>
+        </div>
+
+        <div id="alternativas" class="alternativas-container"></div>
+
+        <div class="imagem-container">
+          <img id="imagem-questao" src="" />
+        </div>
+
+      </main>
+
+      <!-- LATERAL -->
+      <aside class="questao-direita">
+        <button onclick="proximaQuestao()">Próximo →</button>
+        <button onclick="ajuda()">Ajuda</button>
+        <button onclick="voltarInicio()">Lista</button>
+      </aside>
+
+    </div>
+
+  </section>
+
+  <!-- ========================= -->
+  <!-- 🟪 TELA RESULTADO -->
+  <!-- ========================= -->
+  <section id="tela-resultado" class="tela" style="display: none;">
+
+    <main class="conteudo">
+
+      <h1 id="resultado-titulo"></h1>
+
+      <div>
+        <img id="resultado-img" src="">
+      </div>
+
+      <button onclick="voltarInicio()">Lista de Problemas</button>
+
+    </main>
+
+  </section>
+
+  <!-- ========================= -->
+  <!-- 🟪 TELA AJUDA -->
+  <!-- ========================= -->
+  <section id="tela-ajuda" class="tela" style="display:none;">
+
+    <div class="ajuda-layout">
+
+      <!-- ESQUERDA -->
+      <div class="ajuda-esquerda">
+        <img id="imagem-ajuda" src="">
+      </div>
+
+      <!-- CENTRO -->
+      <main class="ajuda-centro">
+
+        <h2 id="titulo-ajuda"></h2>
+
+        <div id="conteudo-ajuda"></div>
+
+        <div id="alternativas-ajuda" class="alternativas-container"></div>
+
+        <div class="acoes-ajuda">
+          <button onclick="validarAjuda()">Validar</button>
+          <button onclick="voltarQuestao()">Voltar</button>
+        </div>
+
+      </main>
+
+      <!-- DIREITA -->
+      <aside class="ajuda-direita">
+        <button onclick="proximaQuestao()">Próximo →</button>
+        <button onclick="mostrarGabaritoAjuda()">Gabarito</button>
+        <button onclick="voltarInicio()">Lista</button>
+      </aside>
+
+    </div>
+
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
