@@ -1,133 +1,29 @@
-const questoes = [
-  {
-    id: 1,
-    titulo: "Problema 01",
-    enunciado: "Uma empresa de ônibus utiliza um sistema de vendas de passagens que fornece a imagem de todos os assentos do ônibus, diferenciando os assentos já vendidos, por uma cor mais escura, dos assentos ainda disponíveis. A empresa monitora permanentemente o número de assentos já vendidos e compara-o com o número total de assentos do ônibus para avaliar a necessidade de alocação de veículos extras. Na Figura abaixo tem-se a informação dos assentos já vendidos e dos ainda disponíveis em um determinado instante. A razão entre o número de assentos já vendidos e o total de assentos desse ônibus, no instante considerado na Figura 01",
-    alternativas: {
-      A: "16/42",
-      B: "16/25",
-      C: "26/42",
-      D: "42/26",
-      E: "2/16"
-    },
-    correta: "C",
-    imagem: "img/onibus.png",
-    ajuda: {
-  tipo: "input",
-  conteudo: `
-  <div class="ajuda-container">
-
-    <p><strong>Solução do problema 01:</strong> 
-    Preencha as lacunas corretamente para resolver o problema.</p>
-
-    <p>
-      O total de assento no ônibus é 
-      <input data-resposta="7"> × <input data-resposta="6"> 
-      = <input data-resposta="42">.
-    </p>
-
-    <p>Na Figura 1 o número de assentos escuros é contado como segue:</p>
-
-    <ul>
-      <li>na 1ª linha: <input data-resposta="6"> assentos escuros.</li>
-      <li>na 2ª linha: <input data-resposta="7"> assentos escuros.</li>
-      <li>na 3ª linha: <input data-resposta="7"> assentos escuros.</li>
-      <li>na 4ª linha: <input data-resposta="6"> assentos escuros.</li>
-    </ul>
-
-    <p>
-      Existem <input data-resposta="26"> assentos escuros.
-      Portanto, a razão entre o número de assentos já vendidos e o total de assentos é 
-      <input data-resposta="26/42">.
-    </p>
-
-    <p>
-      obs: O total de assentos claros é 
-      <input data-resposta="16">.
-    </p>
-
-  </div>
-  `
-}
-  },
-
-  {
-    id: 2,
-    titulo: "Problema 02",
-    enunciado: "Os incas desenvolveram uma maneira de registrar quantidades e representar números utilizando um sistema de numeração decimal posicional: um conjunto de cordas com nós denominado quipus. O número da representação do quipus da Figura 2, em base decimal, é",
-    alternativas: {
-      A: "364",
-      B: "463",
-      C: "3.064",
-      D: "4.603",
-      E: "4.012"
-    },
-    correta: "E",
-    imagem: "img/quipus.jpg"
-  },
-
-  {
-    id: 3,
-    titulo: "Problema 03",
-    enunciado: "Uma mãe recorreu à bula para verificar a dosagem de um remédio que precisava dar a seu filho. Na bula, recomendava-se a seguinte dosagem: 5 gotas para cada 2 kg de massa corporal a cada 8 horas. Se a mãe ministrou corretamente 30 gotas ao seu filho a cada 8 horas, então a massa corporal dele é de",
-    alternativas: {
-      A: "12 kg",
-      B: "16 kg",
-      C: "24 kg",
-      D: "36 kg",
-      E: "75 kg"
-    },
-    correta: "C"
-  },
-
-  {
-    id: 4,
-    titulo: "Problema 04",
-    enunciado: "Uma ponte precisa ser dimensionada de forma que possa ter três pontos de sustentação. Sabe-se que a carga máxima suportada pela ponte será de 12t. O ponto de sustentação central receberá 60% da carga da ponte, e o restante da carga será distribuído igualmente entre os outros dois pontos de sustentação. No caso da carga máxima, as cargas recebidas pelos três pontos de sustentação serão, respectivamente,",
-    alternativas: {
-      A: "1,8t; 8,4t; 1,8t",
-      B: "3,0t; 6,0t; 3,0t",
-      C: "2,4t; 7,2t; 2,4t",
-      D: "3,6t; 4,8t; 3,6t",
-      E: "4,2t; 3,6t; 4,2t"
-    },
-    correta: "C"
-  },
-
-  {
-    id: 5,
-    titulo: "Problema 05",
-    enunciado: "Um mecânico de uma equipe de corrida necessita que as seguintes medidas realizadas em um carro mostrado na figura sejam obtidas em metros: a) distância entre os eixos dianteiro e traseiro; b) altura entre o solo e o encosto do piloto. Ao optar pelas medidas a e b em metros, obtém-se, respectivamente,",
-    alternativas: {
-      A: "0,23 e 0,16",
-      B: "2,3 e 1,6",
-      C: "23 e 16",
-      D: "230 e 160",
-      E: "2300 e 1600"
-    },
-    correta: "B",
-    imagem: "img/carro.png"
-  }
-];
+// ==========================================
+// ARQUIVO: script.js (LÓGICA DO APLICATIVO)
+// ==========================================
 
 let estado = {
   questaoAtual: 0
 };
 
-function abrirQuestao(id) {
-  estado.questaoAtual = id;
+// --- FUNÇÕES AUXILIARES DE TELA ---
 
-  document.getElementById("tela-inicio").style.display = "none";
-  document.getElementById("tela-questao").style.display = "block";
-  document.getElementById("tela-resultado").style.display = "none";
+function mostrarTela(telaId) {
+  const telas = ["tela-inicio", "tela-questao", "tela-resultado", "tela-ajuda"];
+  telas.forEach(tela => {
+    const elemento = document.getElementById(tela);
+    if (elemento) {
+      if (tela === telaId) {
+        elemento.classList.remove("hidden");
+      } else {
+        elemento.classList.add("hidden");
+      }
+    }
+  });
+}
 
-  const q = questoes[id];
-
-  // 🔥 AGORA CORRETO
-  document.getElementById("numero-questao").innerText = q.titulo;
-  document.getElementById("enunciado-questao").innerText = q.enunciado;
-
-  const altDiv = document.getElementById("alternativas");
+function renderizarAlternativas(q, containerId, callbackClique) {
+  const altDiv = document.getElementById(containerId);
   altDiv.innerHTML = "";
 
   for (let letra in q.alternativas) {
@@ -139,59 +35,119 @@ function abrirQuestao(id) {
       <span>${q.alternativas[letra]}</span>
     `;
 
-    div.onclick = () => responder(letra);
-
+    div.onclick = () => callbackClique(div, letra, q.correta);
     altDiv.appendChild(div);
   }
+}
+
+// --- LÓGICA DE PROGRESSO E ACERTOS (LOCALSTORAGE) ---
+
+function marcarComoConcluida(id) {
+  let concluidas = JSON.parse(localStorage.getItem("concluidas_lista_01")) || [];
+  if (!concluidas.includes(id)) {
+    concluidas.push(id);
+    localStorage.setItem("concluidas_lista_01", JSON.stringify(concluidas));
+  }
+}
+
+function atualizarBotoesConcluidos() {
+  let concluidas = JSON.parse(localStorage.getItem("concluidas_lista_01")) || [];
+  const botoes = document.querySelectorAll(".botoes button");
+  
+  botoes.forEach((btn, index) => {
+    if (concluidas.includes(index)) {
+      btn.classList.add("botao-concluido");
+    } else {
+      btn.classList.remove("botao-concluido");
+    }
+  });
+}
+
+function continuarDeOndeParou() {
+  const idSalvo = localStorage.getItem("progresso_lista_01");
+  if (idSalvo !== null) {
+    abrirQuestao(parseInt(idSalvo));
+  } else {
+    alert("Você ainda não começou esta lista!");
+  }
+}
+
+// --- LÓGICA PRINCIPAL DO APLICATIVO ---
+
+function abrirQuestao(id) {
+  estado.questaoAtual = id;
+  localStorage.setItem("progresso_lista_01", id); 
+
+  const q = questoes[id];
+  mostrarTela("tela-questao");
+
+  document.getElementById("numero-questao").innerText = q.titulo;
+  document.getElementById("enunciado-questao").innerText = q.enunciado;
+
+  renderizarAlternativas(q, "alternativas", (elemento, letra) => responder(letra));
 
   const img = document.getElementById("imagem-questao");
-
-  if (q.imagem) {
-    img.src = q.imagem;
-    img.style.display = "block";
-  } else {
-    img.style.display = "none";
-  }
+  img.src = q.imagem || "";
+  img.style.display = q.imagem ? "block" : "none";
 }
 
 function responder(letra) {
   const q = questoes[estado.questaoAtual];
-  const acertou = letra === q.correta;
-  mostrarResultado(acertou);
+  mostrarResultado(letra === q.correta);
 }
 
 function mostrarResultado(acertou) {
-  document.getElementById("tela-questao").style.display = "none";
-  document.getElementById("tela-resultado").style.display = "block";
+  mostrarTela("tela-resultado");
 
   const titulo = document.getElementById("resultado-titulo");
   const img = document.getElementById("resultado-img");
+  const acoesDiv = document.getElementById("acoes-resultado");
 
   if (acertou) {
     titulo.innerText = "Parabéns, resposta CERTA!";
     img.src = "img/acerto.jpeg";
+    marcarComoConcluida(estado.questaoAtual);
+    
+    // Verifica se é a última questão para mudar o texto do botão
+    const ehUltimaQuestao = estado.questaoAtual >= questoes.length - 1;
+    const textoBotaoAvancar = ehUltimaQuestao ? "Finalizar Lista 🎉" : "Próxima Questão →";
+    
+    acoesDiv.innerHTML = `
+      <button onclick="proximaQuestao()" style="padding: 14px 28px; background: #3f6f4a; color: white; border: none; border-radius: 30px; cursor: pointer; font-size: 16px;">${textoBotaoAvancar}</button>
+      <button onclick="voltarInicio()" style="padding: 14px 28px; background: #7c9aa0; color: white; border: none; border-radius: 30px; cursor: pointer; font-size: 16px;">Menu de Problemas</button>
+    `;
   } else {
     titulo.innerText = "Resposta ERRADA";
     img.src = "img/erro.jpg";
+
+    acoesDiv.innerHTML = `
+      <button onclick="voltarQuestao()" style="padding: 14px 28px; background: #e74c3c; color: white; border: none; border-radius: 30px; cursor: pointer; font-size: 16px;">↻ Tentar Novamente</button>
+      <button onclick="ajuda()" style="padding: 14px 28px; background: #f39c12; color: white; border: none; border-radius: 30px; cursor: pointer; font-size: 16px;">Ver Ajuda</button>
+      <button onclick="voltarInicio()" style="padding: 14px 28px; background: #7c9aa0; color: white; border: none; border-radius: 30px; cursor: pointer; font-size: 16px;">Menu de Problemas</button>
+    `;
   }
 }
 
 function voltarInicio() {
-  document.getElementById("tela-inicio").style.display = "block";
-  document.getElementById("tela-questao").style.display = "none";
-  document.getElementById("tela-resultado").style.display = "none";
+  mostrarTela("tela-inicio");
+  atualizarBotoesConcluidos();
   
+  if (estado.questaoAtual >= questoes.length - 1) {
+    localStorage.removeItem("progresso_lista_01");
+    estado.questaoAtual = 0;
+  }
 }
 
 function proximaQuestao() {
   let proxima = estado.questaoAtual + 1;
-
   if (proxima >= questoes.length) {
     voltarInicio();
   } else {
     abrirQuestao(proxima);
   }
 }
+
+// --- LÓGICA DA TELA DE AJUDA ---
 
 function ajuda() {
   const q = questoes[estado.questaoAtual];
@@ -201,32 +157,28 @@ function ajuda() {
     return;
   }
 
-  document.getElementById("tela-questao").style.display = "none";
-  document.getElementById("tela-ajuda").style.display = "block";
+  mostrarTela("tela-ajuda");
 
-  document.getElementById("titulo-ajuda").innerText =
-    "Solução do " + q.titulo;
-
-  document.getElementById("conteudo-ajuda").innerHTML =
-    q.ajuda.conteudo;
+  document.getElementById("titulo-ajuda").innerText = "Solução do " + q.titulo;
+  document.getElementById("conteudo-ajuda").innerHTML = q.ajuda.conteudo;
 
   const img = document.getElementById("imagem-ajuda");
+  img.src = q.imagem || "";
+  img.style.display = q.imagem ? "block" : "none";
 
-  if (q.imagem) {
-    img.src = q.imagem;
-    img.style.display = "block";
-  } else {
-    img.style.display = "none";
-  }
-
-  renderAlternativasAjuda(q);
+  renderizarAlternativas(q, "alternativas-ajuda", (elemento, letra, correta) => selecionarAltAjuda(elemento, letra, correta));
 }
+
 function validarAjuda() {
   const inputs = document.querySelectorAll("#conteudo-ajuda input");
 
   inputs.forEach(input => {
-    const correta = input.dataset.resposta;
-    const valor = input.value.trim();
+    let correta = input.dataset.resposta.toLowerCase();
+    let valor = input.value.toLowerCase();
+
+    // Remove espaços vazios e converte vírgula do Brasil para ponto
+    correta = correta.replace(/\s/g, '').replace(',', '.');
+    valor = valor.replace(/\s/g, '').replace(',', '.');
 
     input.classList.remove("input-correto", "input-errado");
 
@@ -237,27 +189,9 @@ function validarAjuda() {
     }
   });
 }
+
 function voltarQuestao() {
-  document.getElementById("tela-ajuda").style.display = "none";
-  document.getElementById("tela-questao").style.display = "block";
-}
-function renderAlternativasAjuda(q) {
-  const altDiv = document.getElementById("alternativas-ajuda");
-  altDiv.innerHTML = "";
-
-  for (let letra in q.alternativas) {
-    const div = document.createElement("div");
-    div.classList.add("alt");
-
-    div.innerHTML = `
-      <div class="circulo">${letra}</div>
-      <span>${q.alternativas[letra]}</span>
-    `;
-
-    div.onclick = () => selecionarAltAjuda(div, letra, q.correta);
-
-    altDiv.appendChild(div);
-  }
+  mostrarTela("tela-questao");
 }
 
 function selecionarAltAjuda(elemento, letra, correta) {
@@ -265,15 +199,15 @@ function selecionarAltAjuda(elemento, letra, correta) {
     .forEach(c => c.classList.remove("alt-correta", "alt-errada"));
 
   const circulo = elemento.querySelector(".circulo");
-
-  if (letra === correta) {
-    circulo.classList.add("alt-correta");
-  } else {
-    circulo.classList.add("alt-errada");
-  }
+  circulo.classList.add(letra === correta ? "alt-correta" : "alt-errada");
 }
 
 function mostrarGabaritoAjuda() {
   const q = questoes[estado.questaoAtual];
   alert("Resposta correta: " + q.correta);
 }
+
+// Inicializa o visual dos botões de acerto
+window.onload = () => {
+  atualizarBotoesConcluidos();
+};

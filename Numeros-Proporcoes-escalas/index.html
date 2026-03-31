@@ -2,11 +2,11 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista 01</title>
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- Fonte -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900&display=swap" rel="stylesheet">
@@ -14,15 +14,10 @@
 
 <body>
 
-<div id="app">
+<main id="app">
 
-  <!-- ========================= -->
-  <!-- 🟩 TELA INICIAL -->
-  <!-- ========================= -->
   <section id="tela-inicio" class="tela">
-
-    <main class="conteudo">
-
+    <div class="conteudo">
       <h1>Acesso aos Problemas</h1>
 
       <p class="intro">
@@ -38,6 +33,10 @@
 
       <h2>Problemas</h2>
 
+      <button onclick="continuarDeOndeParou()" style="margin: 0 auto 30px auto; padding: 14px 28px; background: #3f6f4a; color: white; border: none; border-radius: 30px; cursor: pointer; display: block; font-size: 16px; letter-spacing: 1px;">
+        Continuar de onde parei
+      </button>
+
       <div class="botoes">
         <button onclick="abrirQuestao(0)">1</button>
         <button onclick="abrirQuestao(1)">2</button>
@@ -45,20 +44,12 @@
         <button onclick="abrirQuestao(3)">4</button>
         <button onclick="abrirQuestao(4)">5</button>
       </div>
-
-    </main>
+    </div>
   </section>
 
-  <!-- ========================= -->
-  <!-- 🟦 TELA QUESTÃO -->
-  <!-- ========================= -->
-  <section id="tela-questao" class="tela" style="display: none;">
-
+  <section id="tela-questao" class="tela hidden">
     <div class="questao-layout">
-
-      <!-- CONTEÚDO -->
-      <main class="conteudo">
-
+      <div class="conteudo">
         <div class="bloco-questao">
           <h2 id="numero-questao"></h2>
           <p id="enunciado-questao"></p>
@@ -67,82 +58,58 @@
         <div id="alternativas" class="alternativas-container"></div>
 
         <div class="imagem-container">
-          <img id="imagem-questao" src="" />
+          <img id="imagem-questao" src="" alt="Imagem ilustrativa da questão" />
         </div>
+      </div>
 
-      </main>
-
-      <!-- LATERAL -->
       <aside class="questao-direita">
         <button onclick="proximaQuestao()">Próximo →</button>
         <button onclick="ajuda()">Ajuda</button>
         <button onclick="voltarInicio()">Lista</button>
       </aside>
-
     </div>
-
   </section>
 
-  <!-- ========================= -->
-  <!-- 🟪 TELA RESULTADO -->
-  <!-- ========================= -->
-  <section id="tela-resultado" class="tela" style="display: none;">
-
-    <main class="conteudo">
-
+  <section id="tela-resultado" class="tela hidden">
+    <div class="conteudo">
       <h1 id="resultado-titulo"></h1>
 
       <div>
-        <img id="resultado-img" src="">
+        <img id="resultado-img" src="" alt="Imagem de resultado da resposta">
       </div>
 
-      <button onclick="voltarInicio()">Lista de Problemas</button>
-
-    </main>
-
+      <div id="acoes-resultado" style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;"></div>
+    </div>
   </section>
 
-  <!-- ========================= -->
-  <!-- 🟪 TELA AJUDA -->
-  <!-- ========================= -->
-  <section id="tela-ajuda" class="tela" style="display:none;">
-
+  <section id="tela-ajuda" class="tela hidden">
     <div class="ajuda-layout">
-
-      <!-- ESQUERDA -->
       <div class="ajuda-esquerda">
-        <img id="imagem-ajuda" src="">
+        <img id="imagem-ajuda" src="" alt="Imagem de apoio para a solução">
       </div>
 
-      <!-- CENTRO -->
-      <main class="ajuda-centro">
-
+      <div class="ajuda-centro">
         <h2 id="titulo-ajuda"></h2>
-
         <div id="conteudo-ajuda"></div>
-
         <div id="alternativas-ajuda" class="alternativas-container"></div>
 
-        <div class="acoes-ajuda">
-          <button onclick="validarAjuda()">Validar</button>
-          <button onclick="voltarQuestao()">Voltar</button>
+        <div class="acoes-ajuda" style="margin-top: 30px;">
+          <button onclick="validarAjuda()" style="padding: 10px 20px; background: #245c3c; color: white; border: none; border-radius: 20px; cursor: pointer; margin-right: 10px;">Validar</button>
+          <button onclick="voltarQuestao()" style="padding: 10px 20px; background: #7c9aa0; color: white; border: none; border-radius: 20px; cursor: pointer;">Voltar para Questão</button>
         </div>
+      </div>
 
-      </main>
-
-      <!-- DIREITA -->
       <aside class="ajuda-direita">
         <button onclick="proximaQuestao()">Próximo →</button>
         <button onclick="mostrarGabaritoAjuda()">Gabarito</button>
         <button onclick="voltarInicio()">Lista</button>
       </aside>
-
     </div>
-
   </section>
 
-</div>
+</main>
 
+<script src="questoes.js"></script>
 <script src="script.js"></script>
 
 </body>
