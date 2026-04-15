@@ -810,5 +810,4 @@ const questoes = [
       "conteudo": "<p>Diz o enunciado que a recomendação é ingerir 01 copo de água de 150mℓ a cada <input data-resposta=\"0,5\"> hora, durante <input data-resposta=\"10\"> horas que antecedem o exame. O total de água que deve ser ingerida antes do exame é <input data-resposta=\"3000\"> mℓ ou <input data-resposta=\"3\"> litros. Portanto, são necessárias 2 garrafas de <input data-resposta=\"1,50\"> litros.</p>"
     }
   }
-
 ];

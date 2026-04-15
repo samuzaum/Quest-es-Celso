@@ -1,0 +1,353 @@
+/* ========================= */
+/* VARIÁVEIS DE CORES */
+/* ========================= */
+:root {
+  --verde-escuro: #245c3c;
+  --bege: #FFFAF1;
+  --azul-botao: #7c9aa0;
+  --texto: #1a1a1a;
+  --titulo: #1c3f2e;
+}
+
+body {
+  margin: 0;
+  font-family: "Bodoni Moda", serif;
+  background: var(--bege);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ========================= */
+/* BASE E CLASSES GERAIS */
+/* ========================= */
+
+.conteudo {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+h1 {
+  font-size: 46px;
+  margin-bottom: 25px;
+  color: var(--titulo);
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 34px;
+  color: var(--titulo);
+  font-weight: 500;
+}
+
+/* Classe crucial para o Javascript esconder as telas */
+.hidden {
+  display: none !important;
+}
+
+/* ========================= */
+/* TELA INÍCIO */
+/* ========================= */
+
+.intro {
+  max-width: 520px;
+  margin: 0 auto 30px auto;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.instrucao {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.item {
+  margin-bottom: 10px;
+}
+
+.numero {
+  display: inline-block;
+  width: 25px;
+  text-align: right;
+  margin-right: 8px;
+}
+
+.texto {
+  display: inline-block;
+  width: calc(100% - 40px);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.botoes {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.botoes button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin: 10px 15px;
+  border: none;
+  background: var(--azul-botao);
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 16px;
+  color: #1a1a1a;
+}
+
+/* Estilo para botões de questões já acertadas */
+.botao-concluido {
+  background: #2ecc71 !important;
+  color: white !important;
+  border: 2px solid #27ae60 !important;
+}
+
+.botao-concluido::after {
+  content: ' ✔'; 
+  font-size: 14px;
+}
+
+/* ========================= */
+/* TELA QUESTÃO */
+/* ========================= */
+
+#tela-questao {
+  background: #b7c9b3;
+  min-height: 100vh;
+  padding-top: 60px; /* Correção da margem no topo */
+  box-sizing: border-box;
+}
+
+.questao-layout {
+  display: grid;
+  grid-template-columns: 1fr 240px; 
+  gap: 60px; 
+  max-width: 1100px; 
+  margin: 0 auto; /* Correção da margem no topo */
+  padding: 0 20px; 
+}
+
+#tela-questao .conteudo {
+  max-width: 100%;
+  text-align: left;
+  padding: 0; 
+}
+
+#tela-questao h2 {
+  font-size: 34px;
+  margin-bottom: 20px;
+}
+
+#tela-questao #enunciado-questao {
+  font-size: 15px;
+  line-height: 1.9;
+  max-width: 100%;
+}
+
+.alternativas-container {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 25px;
+  margin: 30px 0 40px 0;
+}
+
+.alt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.circulo {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #4f7a7a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; 
+}
+
+.imagem-container {
+  margin: 40px 0;
+}
+
+#imagem-questao {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+}
+
+.questao-direita {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* margin-top removido para alinhar melhor com o título */
+}
+
+.questao-direita button {
+  background: #3f6f4a;
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 30px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 15px;
+  transition: opacity 0.2s;
+}
+
+.questao-direita button:hover {
+  opacity: 0.9;
+}
+
+/* ========================= */
+/* TELA AJUDA */
+/* ========================= */
+
+#tela-ajuda {
+  padding: 40px 20px; 
+  max-width: 1200px;
+  margin: auto;
+}
+
+.ajuda-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr 240px; 
+  gap: 40px;
+}
+
+.ajuda-esquerda img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+.ajuda-centro {
+  max-width: 100%;
+  font-size: 16px;
+  line-height: 2;
+}
+
+#tela-ajuda input {
+  width: 60px;
+  height: 28px;
+  text-align: center;
+  border-radius: 6px;
+  border: 2px solid #ccc;
+  font-family: inherit;
+}
+
+.input-correto {
+  border-color: #2ecc71 !important;
+  background: #eafaf1;
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.input-errado {
+  border-color: #e74c3c !important;
+  background: #fdecea;
+  color: #c0392b;
+}
+
+#tela-ajuda .alternativas-container {
+  margin-top: 40px;
+  gap: 40px;
+}
+
+#tela-ajuda .circulo {
+  width: 45px;
+  height: 45px;
+}
+
+/* Cores de feedback visual nas alternativas da ajuda */
+.alt-correta {
+  background: #2ecc71 !important;
+}
+
+.alt-errada {
+  background: #e74c3c !important;
+}
+
+.ajuda-direita {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.ajuda-direita button {
+  background: #3f6f4a;
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 30px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 15px;
+}
+
+/* ========================= */
+/* RESPONSIVIDADE (MOBILE E TABLET) */
+/* ========================= */
+
+/* Telas médias (Tablets e Laptops menores) */
+@media (max-width: 1024px) {
+  .ajuda-layout {
+    grid-template-columns: 1fr 240px; 
+  }
+
+  .ajuda-esquerda {
+    grid-column: 1 / -1; 
+    text-align: center;
+  }
+  
+  .ajuda-esquerda img {
+    margin: 0 auto;
+  }
+}
+
+/* Telas pequenas (Celulares) */
+@media (max-width: 768px) {
+  h1 { font-size: 32px; }
+  h2, #tela-questao h2 { font-size: 26px; }
+  
+  .conteudo {
+    padding: 40px 15px;
+  }
+
+  /* Transforma a grade da Questão em 1 coluna */
+  .questao-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  /* Transforma a grade da Ajuda em 1 coluna */
+  .ajuda-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  #tela-ajuda {
+    padding: 20px 15px;
+  }
+
+  .ajuda-centro {
+    font-size: 15px;
+  }
+
+  /* Empilha as alternativas no mobile para melhor leitura */
+  .alternativas-container, #tela-ajuda .alternativas-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
