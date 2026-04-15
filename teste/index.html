@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista 01</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<main id="app">
+
+  <section id="tela-inicio" class="tela">
+    <div class="conteudo">
+      <h1>Acesso aos Problemas</h1>
+
+      <p class="intro">
+        Clique sobre um botão para acessar um problema da lista. Siga com atenção as seguintes instruções:
+      </p>
+
+      <div class="instrucao">
+        <div class="item"><div class="numero">1.</div><div class="texto">Leia o enunciado com atenção.</div></div>
+        <div class="item"><div class="numero">2.</div><div class="texto">Use papel para organizar as informações.</div></div>
+        <div class="item"><div class="numero">3.</div><div class="texto">Desenvolva seu raciocínio.</div></div>
+        <div class="item"><div class="numero">4.</div><div class="texto">Use a ajuda se necessário.</div></div>
+      </div>
+
+      <h2>Problemas</h2>
+
+      <button onclick="continuarDeOndeParou()" style="margin: 0 auto 30px auto; padding: 14px 28px; background: #3f6f4a; color: white; border: none; border-radius: 30px; cursor: pointer; display: block; font-size: 16px; letter-spacing: 1px;">
+        Continuar de onde parei
+      </button>
+
+      <div class="botoes">
+        <button onclick="abrirQuestao(0)">1</button>
+        <button onclick="abrirQuestao(1)">2</button>
+        <button onclick="abrirQuestao(2)">3</button>
+        <button onclick="abrirQuestao(3)">4</button>
+        <button onclick="abrirQuestao(4)">5</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="tela-questao" class="tela hidden">
+    <div class="questao-layout">
+      <div class="conteudo">
+        <div class="bloco-questao">
+          <h2 id="numero-questao"></h2>
+          <p id="enunciado-questao"></p>
+        </div>
+
+        <div id="alternativas" class="alternativas-container"></div>
+
+        <div class="imagem-container">
+          <img id="imagem-questao" src="" alt="Imagem ilustrativa da questão" />
+        </div>
+      </div>
+
+      <aside class="questao-direita">
+        <button onclick="proximaQuestao()">Próximo →</button>
+        <button onclick="ajuda()">Ajuda</button>
+        <button onclick="voltarInicio()">Lista</button>
+      </aside>
+    </div>
+  </section>
+
+  <section id="tela-resultado" class="tela hidden">
+    <div class="conteudo">
+      <h1 id="resultado-titulo"></h1>
+
+      <div>
+        <img id="resultado-img" src="" alt="Imagem de resultado da resposta">
+      </div>
+
+      <div id="acoes-resultado" style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;"></div>
+    </div>
+  </section>
+
+  <section id="tela-ajuda" class="tela hidden">
+    <div class="ajuda-layout">
+      <div class="ajuda-esquerda">
+        <img id="imagem-ajuda" src="" alt="Imagem de apoio para a solução">
+      </div>
+
+      <div class="ajuda-centro">
+        <h2 id="titulo-ajuda"></h2>
+        <div id="conteudo-ajuda"></div>
+        <div id="alternativas-ajuda" class="alternativas-container"></div>
+
+        <div class="acoes-ajuda" style="margin-top: 30px;">
+          <button onclick="validarAjuda()" style="padding: 10px 20px; background: #245c3c; color: white; border: none; border-radius: 20px; cursor: pointer; margin-right: 10px;">Validar</button>
+          <button onclick="voltarQuestao()" style="padding: 10px 20px; background: #7c9aa0; color: white; border: none; border-radius: 20px; cursor: pointer;">Voltar para Questão</button>
+        </div>
+      </div>
+
+      <aside class="ajuda-direita">
+        <button onclick="proximaQuestao()">Próximo →</button>
+        <button onclick="mostrarGabaritoAjuda()">Gabarito</button>
+        <button onclick="voltarInicio()">Lista</button>
+      </aside>
+    </div>
+  </section>
+
+</main>
+
+<script src="questoes.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
